@@ -27,17 +27,79 @@ public class gui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        UserTabMainPanel = new javax.swing.JPanel();
+        UserTabSideBar = new javax.swing.JPanel();
+        AdminTabManPanel = new javax.swing.JPanel();
+        AdminTabSideBar = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        UserTabSideBar.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout UserTabSideBarLayout = new javax.swing.GroupLayout(UserTabSideBar);
+        UserTabSideBar.setLayout(UserTabSideBarLayout);
+        UserTabSideBarLayout.setHorizontalGroup(
+            UserTabSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 79, Short.MAX_VALUE)
+        );
+        UserTabSideBarLayout.setVerticalGroup(
+            UserTabSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 573, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout UserTabMainPanelLayout = new javax.swing.GroupLayout(UserTabMainPanel);
+        UserTabMainPanel.setLayout(UserTabMainPanelLayout);
+        UserTabMainPanelLayout.setHorizontalGroup(
+            UserTabMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserTabMainPanelLayout.createSequentialGroup()
+                .addComponent(UserTabSideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 816, Short.MAX_VALUE))
+        );
+        UserTabMainPanelLayout.setVerticalGroup(
+            UserTabMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(UserTabSideBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jTabbedPane3.addTab("User Tab", UserTabMainPanel);
+
+        AdminTabSideBar.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout AdminTabSideBarLayout = new javax.swing.GroupLayout(AdminTabSideBar);
+        AdminTabSideBar.setLayout(AdminTabSideBarLayout);
+        AdminTabSideBarLayout.setHorizontalGroup(
+            AdminTabSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 79, Short.MAX_VALUE)
+        );
+        AdminTabSideBarLayout.setVerticalGroup(
+            AdminTabSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 573, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout AdminTabManPanelLayout = new javax.swing.GroupLayout(AdminTabManPanel);
+        AdminTabManPanel.setLayout(AdminTabManPanelLayout);
+        AdminTabManPanelLayout.setHorizontalGroup(
+            AdminTabManPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdminTabManPanelLayout.createSequentialGroup()
+                .addComponent(AdminTabSideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 816, Short.MAX_VALUE))
+        );
+        AdminTabManPanelLayout.setVerticalGroup(
+            AdminTabManPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(AdminTabSideBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jTabbedPane3.addTab("Admin Tab", AdminTabManPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3)
         );
 
         pack();
@@ -79,5 +141,10 @@ public class gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AdminTabManPanel;
+    private javax.swing.JPanel AdminTabSideBar;
+    private javax.swing.JPanel UserTabMainPanel;
+    private javax.swing.JPanel UserTabSideBar;
+    private javax.swing.JTabbedPane jTabbedPane3;
     // End of variables declaration//GEN-END:variables
 }
