@@ -33,6 +33,15 @@ public class gui extends javax.swing.JFrame {
         userTabAccountBtn = new javax.swing.JButton();
         UserTabInventoryBtn = new javax.swing.JButton();
         userTabAccountPanel = new javax.swing.JPanel();
+        userLogoutBtn = new javax.swing.JButton();
+        userFormPanel1 = new javax.swing.JPanel();
+        userFormLabel4 = new javax.swing.JLabel();
+        userFormUsernameField = new javax.swing.JTextField();
+        userFormPasswordField = new javax.swing.JPasswordField();
+        userFormLabel5 = new javax.swing.JLabel();
+        userFormLabel6 = new javax.swing.JLabel();
+        userFormLoginBtn = new javax.swing.JButton();
+        userFormRegisterBtn = new javax.swing.JButton();
         userTabInvenoryPanel = new javax.swing.JPanel();
         adminTabPanel = new javax.swing.JPanel();
         adminTabSidePanel = new javax.swing.JPanel();
@@ -85,15 +94,88 @@ public class gui extends javax.swing.JFrame {
 
         userTabAccountPanel.setBackground(new java.awt.Color(204, 204, 204));
 
+        userLogoutBtn.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        userLogoutBtn.setText("Logout");
+
+        userFormLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
+        userFormLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userFormLabel4.setText("Enter Username and Password to Login or Registere");
+
+        userFormUsernameField.setText(" Username");
+
+        userFormLabel5.setText(" Username:");
+
+        userFormLabel6.setText(" Password:");
+
+        userFormLoginBtn.setText("Login");
+
+        userFormRegisterBtn.setText("Register");
+
+        javax.swing.GroupLayout userFormPanel1Layout = new javax.swing.GroupLayout(userFormPanel1);
+        userFormPanel1.setLayout(userFormPanel1Layout);
+        userFormPanel1Layout.setHorizontalGroup(
+            userFormPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userFormPanel1Layout.createSequentialGroup()
+                .addGroup(userFormPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(userFormPanel1Layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(userFormLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(userFormPanel1Layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addGroup(userFormPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(userFormUsernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                            .addComponent(userFormPasswordField)
+                            .addComponent(userFormLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userFormLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userFormPanel1Layout.createSequentialGroup()
+                                .addComponent(userFormRegisterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(userFormLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)))))
+                .addContainerGap(159, Short.MAX_VALUE))
+        );
+        userFormPanel1Layout.setVerticalGroup(
+            userFormPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userFormPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(userFormLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(userFormLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userFormUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(userFormLabel6)
+                .addGap(5, 5, 5)
+                .addComponent(userFormPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(userFormPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userFormRegisterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userFormLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(123, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout userTabAccountPanelLayout = new javax.swing.GroupLayout(userTabAccountPanel);
         userTabAccountPanel.setLayout(userTabAccountPanelLayout);
         userTabAccountPanelLayout.setHorizontalGroup(
             userTabAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 950, Short.MAX_VALUE)
+            .addGroup(userTabAccountPanelLayout.createSequentialGroup()
+                .addGroup(userTabAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(userTabAccountPanelLayout.createSequentialGroup()
+                        .addGap(341, 341, 341)
+                        .addComponent(userLogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(userTabAccountPanelLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(userFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         userTabAccountPanelLayout.setVerticalGroup(
             userTabAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGroup(userTabAccountPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(userFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(userLogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         userTabPanel.add(userTabAccountPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 950, 580));
@@ -191,6 +273,36 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JButton UserTabInventoryBtn;
     private javax.swing.JPanel adminTabPanel;
     private javax.swing.JPanel adminTabSidePanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel userFormLabel4;
+    private javax.swing.JLabel userFormLabel5;
+    private javax.swing.JLabel userFormLabel6;
+    private javax.swing.JButton userFormLoginBtn;
+    private javax.swing.JPanel userFormPanel1;
+    private javax.swing.JPasswordField userFormPasswordField;
+    private javax.swing.JButton userFormRegisterBtn;
+    private javax.swing.JTextField userFormUsernameField;
+    private javax.swing.JLabel userLoginLabel1;
+    private javax.swing.JLabel userLoginLabel2;
+    private javax.swing.JLabel userLoginLabel3;
+    private javax.swing.JPanel userLoginPanel;
+    private javax.swing.JPasswordField userLoginPasswordField;
+    private javax.swing.JTextField userLoginUsernameField;
+    private javax.swing.JButton userLogoutBtn;
+    private javax.swing.JLabel userRegisterLabel1;
+    private javax.swing.JLabel userRegisterLabel2;
+    private javax.swing.JLabel userRegisterLabel3;
+    private javax.swing.JLabel userRegisterLabel4;
+    private javax.swing.JLabel userRegisterLabel5;
+    private javax.swing.JLabel userRegisterLabel6;
+    private javax.swing.JPanel userRegisterPanel;
+    private javax.swing.JPanel userRegisterPanel1;
+    private javax.swing.JPasswordField userRegisterPasswordField;
+    private javax.swing.JPasswordField userRegisterPasswordField1;
+    private javax.swing.JButton userRegisterRegisterBtn;
+    private javax.swing.JButton userRegisterRegisterBtn1;
+    private javax.swing.JTextField userRegisterUsernameField;
+    private javax.swing.JTextField userRegisterUsernameField1;
     private javax.swing.JButton userTabAccountBtn;
     private javax.swing.JPanel userTabAccountPanel;
     private javax.swing.JPanel userTabInvenoryPanel;
