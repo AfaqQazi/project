@@ -5,12 +5,16 @@
  */
 package shopproject;
 
+// User imports Afaq
+import user.Account;
+import user.User;
+
 /**
  *
- * @author Afaq Qazi
+ * @author Afaq Qazi Taimoor Pervaiz
  */
 public class gui extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form gui
      */
@@ -42,6 +46,10 @@ public class gui extends javax.swing.JFrame {
         userFormLabel6 = new javax.swing.JLabel();
         userFormLoginBtn = new javax.swing.JButton();
         userFormRegisterBtn = new javax.swing.JButton();
+        userFormEmptyError = new javax.swing.JLabel();
+        userFormAlreadRegisteredError = new javax.swing.JLabel();
+        userFormIncorrectError = new javax.swing.JLabel();
+        userFormRegisteredMsg = new javax.swing.JLabel();
         userTabInvenoryPanel = new javax.swing.JPanel();
         adminTabPanel = new javax.swing.JPanel();
         adminTabSidePanel = new javax.swing.JPanel();
@@ -96,20 +104,56 @@ public class gui extends javax.swing.JFrame {
 
         userLogoutBtn.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         userLogoutBtn.setText("Logout");
+        userLogoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userLogoutBtnActionPerformed(evt);
+            }
+        });
+
+        userFormPanel.setForeground(new java.awt.Color(255, 0, 0));
 
         userFormLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
         userFormLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userFormLabel4.setText("Enter Username and Password to Login or Registere");
-
-        userFormUsernameField.setText(" Username");
 
         userFormLabel5.setText(" Username:");
 
         userFormLabel6.setText(" Password:");
 
         userFormLoginBtn.setText("Login");
+        userFormLoginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userFormLoginBtnActionPerformed(evt);
+            }
+        });
 
         userFormRegisterBtn.setText("Register");
+        userFormRegisterBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userFormRegisterBtnActionPerformed(evt);
+            }
+        });
+
+        userFormEmptyError.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        userFormEmptyError.setForeground(new java.awt.Color(255, 51, 51));
+        userFormEmptyError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userFormEmptyError.setText("Username or Password is empty");
+
+        userFormAlreadRegisteredError.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        userFormAlreadRegisteredError.setForeground(new java.awt.Color(255, 51, 51));
+        userFormAlreadRegisteredError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userFormAlreadRegisteredError.setText("This username is already registered");
+
+        userFormIncorrectError.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        userFormIncorrectError.setForeground(new java.awt.Color(255, 51, 51));
+        userFormIncorrectError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userFormIncorrectError.setText("Username or Password is incorrect");
+
+        userFormRegisteredMsg.setBackground(new java.awt.Color(102, 102, 102));
+        userFormRegisteredMsg.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        userFormRegisteredMsg.setForeground(new java.awt.Color(0, 153, 0));
+        userFormRegisteredMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userFormRegisteredMsg.setText("User have been Registered");
 
         javax.swing.GroupLayout userFormPanelLayout = new javax.swing.GroupLayout(userFormPanel);
         userFormPanel.setLayout(userFormPanelLayout);
@@ -122,17 +166,31 @@ public class gui extends javax.swing.JFrame {
                         .addComponent(userFormLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(userFormPanelLayout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(userFormUsernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                            .addComponent(userFormPasswordField)
-                            .addComponent(userFormLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(userFormLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userFormPanelLayout.createSequentialGroup()
-                                .addComponent(userFormRegisterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(userFormLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)))))
+                        .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(userFormUsernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                                .addComponent(userFormPasswordField)
+                                .addComponent(userFormLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(userFormLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userFormPanelLayout.createSequentialGroup()
+                                    .addComponent(userFormRegisterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(35, 35, 35)
+                                    .addComponent(userFormLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(8, 8, 8)))
+                            .addGroup(userFormPanelLayout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(userFormEmptyError, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(userFormIncorrectError, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(userFormPanelLayout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addComponent(userFormRegisteredMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(159, Short.MAX_VALUE))
+            .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(userFormPanelLayout.createSequentialGroup()
+                    .addGap(175, 175, 175)
+                    .addComponent(userFormAlreadRegisteredError, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(195, Short.MAX_VALUE)))
         );
         userFormPanelLayout.setVerticalGroup(
             userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +209,18 @@ public class gui extends javax.swing.JFrame {
                 .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userFormRegisterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userFormLoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userFormEmptyError, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userFormIncorrectError, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addComponent(userFormRegisteredMsg)
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userFormPanelLayout.createSequentialGroup()
+                    .addContainerGap(292, Short.MAX_VALUE)
+                    .addComponent(userFormAlreadRegisteredError, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(61, 61, 61)))
         );
 
         javax.swing.GroupLayout userTabAccountPanelLayout = new javax.swing.GroupLayout(userTabAccountPanel);
@@ -220,9 +289,17 @@ public class gui extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+    
+    
+    
+    // USER ACTION FUNCTON DO NOT INCLUDE ADMIN FUNCTION WITH THESE
+    
     private void userTabAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTabAccountBtnActionPerformed
         // TODO add your handling code here:
+        Account.show(this.userFormPanel , this.userLogoutBtn);
+        Account.clearErrors(this.userFormEmptyError, this.userFormAlreadRegisteredError , this.userFormIncorrectError , this.userFormRegisteredMsg);
         this.userTabAccountPanel.setVisible(true);
         this.userTabInvenoryPanel.setVisible(false);
     }//GEN-LAST:event_userTabAccountBtnActionPerformed
@@ -233,6 +310,31 @@ public class gui extends javax.swing.JFrame {
         this.userTabInvenoryPanel.setVisible(true);
     }//GEN-LAST:event_UserTabInventoryBtnActionPerformed
 
+    private void userFormRegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userFormRegisterBtnActionPerformed
+        // TODO add your handling code here:
+        Account.clearErrors(this.userFormEmptyError,this.userFormAlreadRegisteredError, this.userFormIncorrectError , this.userFormRegisteredMsg);
+        String username = this.userFormUsernameField.getText();
+        String password = this.userFormPasswordField.getText();
+        Account.registerUser(username , password , this.userFormEmptyError , this.userFormAlreadRegisteredError , this.userFormRegisteredMsg);
+    }//GEN-LAST:event_userFormRegisterBtnActionPerformed
+
+    private void userFormLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userFormLoginBtnActionPerformed
+        // TODO add your handling code here:
+        Account.clearErrors(this.userFormEmptyError,this.userFormAlreadRegisteredError, this.userFormIncorrectError , this.userFormRegisteredMsg);        
+        String username = this.userFormUsernameField.getText();
+        String password = this.userFormPasswordField.getText();
+        Account.loginUser(username , password , this.userFormEmptyError , this.userFormIncorrectError);
+        Account.show(this.userFormPanel , this.userLogoutBtn);
+    }//GEN-LAST:event_userFormLoginBtnActionPerformed
+
+    private void userLogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userLogoutBtnActionPerformed
+        // TODO add your handling code here:
+        Account.logoutUser();
+        Account.show(this.userFormPanel , this.userLogoutBtn);
+    }//GEN-LAST:event_userLogoutBtnActionPerformed
+    
+    // USER ACTION FUNCTON END
+    
     /**
      * @param args the command line arguments
      */
@@ -259,11 +361,14 @@ public class gui extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new gui().setVisible(true);
+                gui a = new gui();
+                a.setVisible(true);
+                // this is so user does not see the account panel when he is not logged in
+                a.userTabAccountPanel.setVisible(false);
             }
         });
     }
@@ -273,7 +378,9 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JButton UserTabInventoryBtn;
     private javax.swing.JPanel adminTabPanel;
     private javax.swing.JPanel adminTabSidePanel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel userFormAlreadRegisteredError;
+    private javax.swing.JLabel userFormEmptyError;
+    private javax.swing.JLabel userFormIncorrectError;
     private javax.swing.JLabel userFormLabel4;
     private javax.swing.JLabel userFormLabel5;
     private javax.swing.JLabel userFormLabel6;
@@ -281,28 +388,9 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JPanel userFormPanel;
     private javax.swing.JPasswordField userFormPasswordField;
     private javax.swing.JButton userFormRegisterBtn;
+    private javax.swing.JLabel userFormRegisteredMsg;
     private javax.swing.JTextField userFormUsernameField;
-    private javax.swing.JLabel userLoginLabel1;
-    private javax.swing.JLabel userLoginLabel2;
-    private javax.swing.JLabel userLoginLabel3;
-    private javax.swing.JPanel userLoginPanel;
-    private javax.swing.JPasswordField userLoginPasswordField;
-    private javax.swing.JTextField userLoginUsernameField;
     private javax.swing.JButton userLogoutBtn;
-    private javax.swing.JLabel userRegisterLabel1;
-    private javax.swing.JLabel userRegisterLabel2;
-    private javax.swing.JLabel userRegisterLabel3;
-    private javax.swing.JLabel userRegisterLabel4;
-    private javax.swing.JLabel userRegisterLabel5;
-    private javax.swing.JLabel userRegisterLabel6;
-    private javax.swing.JPanel userRegisterPanel;
-    private javax.swing.JPanel userRegisterPanel1;
-    private javax.swing.JPasswordField userRegisterPasswordField;
-    private javax.swing.JPasswordField userRegisterPasswordField1;
-    private javax.swing.JButton userRegisterRegisterBtn;
-    private javax.swing.JButton userRegisterRegisterBtn1;
-    private javax.swing.JTextField userRegisterUsernameField;
-    private javax.swing.JTextField userRegisterUsernameField1;
     private javax.swing.JButton userTabAccountBtn;
     private javax.swing.JPanel userTabAccountPanel;
     private javax.swing.JPanel userTabInvenoryPanel;
