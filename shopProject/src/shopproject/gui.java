@@ -35,7 +35,8 @@ public class gui extends javax.swing.JFrame {
         userTabPanel = new javax.swing.JPanel();
         userTabSidePanel = new javax.swing.JPanel();
         userTabAccountBtn = new javax.swing.JButton();
-        UserTabInventoryBtn = new javax.swing.JButton();
+        UserTabCartBtn = new javax.swing.JButton();
+        userTabShopBtn = new javax.swing.JButton();
         userTabAccountPanel = new javax.swing.JPanel();
         userLogoutBtn = new javax.swing.JButton();
         userFormPanel = new javax.swing.JPanel();
@@ -50,7 +51,8 @@ public class gui extends javax.swing.JFrame {
         userFormAlreadRegisteredError = new javax.swing.JLabel();
         userFormIncorrectError = new javax.swing.JLabel();
         userFormRegisteredMsg = new javax.swing.JLabel();
-        userTabInvenoryPanel = new javax.swing.JPanel();
+        userTabCartPanel = new javax.swing.JPanel();
+        userTabShopPanel = new javax.swing.JPanel();
         adminTabPanel = new javax.swing.JPanel();
         adminTabSidePanel = new javax.swing.JPanel();
 
@@ -68,10 +70,17 @@ public class gui extends javax.swing.JFrame {
             }
         });
 
-        UserTabInventoryBtn.setText("inventory");
-        UserTabInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+        UserTabCartBtn.setText("Cart");
+        UserTabCartBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserTabInventoryBtnActionPerformed(evt);
+                UserTabCartBtnActionPerformed(evt);
+            }
+        });
+
+        userTabShopBtn.setText("Shop");
+        userTabShopBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userTabShopBtnActionPerformed(evt);
             }
         });
 
@@ -82,11 +91,10 @@ public class gui extends javax.swing.JFrame {
             .addGroup(userTabSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(userTabSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userTabSidePanelLayout.createSequentialGroup()
-                        .addComponent(userTabAccountBtn)
-                        .addGap(4, 4, 4))
-                    .addComponent(UserTabInventoryBtn, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(UserTabCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userTabAccountBtn)
+                    .addComponent(userTabShopBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         userTabSidePanelLayout.setVerticalGroup(
             userTabSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,8 +102,10 @@ public class gui extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(userTabAccountBtn)
                 .addGap(26, 26, 26)
-                .addComponent(UserTabInventoryBtn)
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addComponent(UserTabCartBtn)
+                .addGap(27, 27, 27)
+                .addComponent(userTabShopBtn)
+                .addContainerGap(413, Short.MAX_VALUE))
         );
 
         userTabPanel.add(userTabSidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, -1));
@@ -114,7 +124,7 @@ public class gui extends javax.swing.JFrame {
 
         userFormLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
         userFormLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        userFormLabel4.setText("Enter Username and Password to Login or Registere");
+        userFormLabel4.setText("Enter Username and Password to Login or Register");
 
         userFormLabel5.setText(" Username:");
 
@@ -162,9 +172,6 @@ public class gui extends javax.swing.JFrame {
             .addGroup(userFormPanelLayout.createSequentialGroup()
                 .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(userFormPanelLayout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(userFormLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(userFormPanelLayout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -184,8 +191,11 @@ public class gui extends javax.swing.JFrame {
                                     .addComponent(userFormIncorrectError, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(userFormPanelLayout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addComponent(userFormRegisteredMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(159, Short.MAX_VALUE))
+                        .addComponent(userFormRegisteredMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(userFormPanelLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(userFormLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(113, Short.MAX_VALUE))
             .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(userFormPanelLayout.createSequentialGroup()
                     .addGap(175, 175, 175)
@@ -235,7 +245,7 @@ public class gui extends javax.swing.JFrame {
                     .addGroup(userTabAccountPanelLayout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(userFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         userTabAccountPanelLayout.setVerticalGroup(
             userTabAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,25 +254,40 @@ public class gui extends javax.swing.JFrame {
                 .addComponent(userFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addComponent(userLogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         userTabPanel.add(userTabAccountPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 950, 580));
 
-        userTabInvenoryPanel.setBackground(new java.awt.Color(204, 204, 204));
+        userTabCartPanel.setBackground(new java.awt.Color(204, 204, 204));
 
-        javax.swing.GroupLayout userTabInvenoryPanelLayout = new javax.swing.GroupLayout(userTabInvenoryPanel);
-        userTabInvenoryPanel.setLayout(userTabInvenoryPanelLayout);
-        userTabInvenoryPanelLayout.setHorizontalGroup(
-            userTabInvenoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout userTabCartPanelLayout = new javax.swing.GroupLayout(userTabCartPanel);
+        userTabCartPanel.setLayout(userTabCartPanelLayout);
+        userTabCartPanelLayout.setHorizontalGroup(
+            userTabCartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 950, Short.MAX_VALUE)
         );
-        userTabInvenoryPanelLayout.setVerticalGroup(
-            userTabInvenoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        userTabCartPanelLayout.setVerticalGroup(
+            userTabCartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 580, Short.MAX_VALUE)
         );
 
-        userTabPanel.add(userTabInvenoryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 0, 950, -1));
+        userTabPanel.add(userTabCartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 0, 950, -1));
+
+        userTabShopPanel.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout userTabShopPanelLayout = new javax.swing.GroupLayout(userTabShopPanel);
+        userTabShopPanel.setLayout(userTabShopPanelLayout);
+        userTabShopPanelLayout.setHorizontalGroup(
+            userTabShopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 950, Short.MAX_VALUE)
+        );
+        userTabShopPanelLayout.setVerticalGroup(
+            userTabShopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
+        );
+
+        userTabPanel.add(userTabShopPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 0, 950, -1));
 
         MainTabbedPane.addTab("User Tab", userTabPanel);
 
@@ -301,14 +326,16 @@ public class gui extends javax.swing.JFrame {
         Account.show(this.userFormPanel , this.userLogoutBtn);
         Account.clearErrors(this.userFormEmptyError, this.userFormAlreadRegisteredError , this.userFormIncorrectError , this.userFormRegisteredMsg);
         this.userTabAccountPanel.setVisible(true);
-        this.userTabInvenoryPanel.setVisible(false);
+        this.userTabCartPanel.setVisible(false);
+        this.userTabShopPanel.setVisible(false);
     }//GEN-LAST:event_userTabAccountBtnActionPerformed
 
-    private void UserTabInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserTabInventoryBtnActionPerformed
+    private void UserTabCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserTabCartBtnActionPerformed
         // TODO add your handling code here:
         this.userTabAccountPanel.setVisible(false);
-        this.userTabInvenoryPanel.setVisible(true);
-    }//GEN-LAST:event_UserTabInventoryBtnActionPerformed
+        this.userTabCartPanel.setVisible(true);
+        this.userTabShopPanel.setVisible(false);
+    }//GEN-LAST:event_UserTabCartBtnActionPerformed
 
     private void userFormRegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userFormRegisterBtnActionPerformed
         // TODO add your handling code here:
@@ -332,6 +359,13 @@ public class gui extends javax.swing.JFrame {
         Account.logoutUser();
         Account.show(this.userFormPanel , this.userLogoutBtn);
     }//GEN-LAST:event_userLogoutBtnActionPerformed
+
+    private void userTabShopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTabShopBtnActionPerformed
+        // TODO add your handling code here:
+        this.userTabAccountPanel.setVisible(false);
+        this.userTabCartPanel.setVisible(false);
+        this.userTabShopPanel.setVisible(true);
+    }//GEN-LAST:event_userTabShopBtnActionPerformed
     
     // USER ACTION FUNCTON END
     
@@ -375,7 +409,7 @@ public class gui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane MainTabbedPane;
-    private javax.swing.JButton UserTabInventoryBtn;
+    private javax.swing.JButton UserTabCartBtn;
     private javax.swing.JPanel adminTabPanel;
     private javax.swing.JPanel adminTabSidePanel;
     private javax.swing.JLabel userFormAlreadRegisteredError;
@@ -393,8 +427,10 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JButton userLogoutBtn;
     private javax.swing.JButton userTabAccountBtn;
     private javax.swing.JPanel userTabAccountPanel;
-    private javax.swing.JPanel userTabInvenoryPanel;
+    private javax.swing.JPanel userTabCartPanel;
     private javax.swing.JPanel userTabPanel;
+    private javax.swing.JButton userTabShopBtn;
+    private javax.swing.JPanel userTabShopPanel;
     private javax.swing.JPanel userTabSidePanel;
     // End of variables declaration//GEN-END:variables
 }
