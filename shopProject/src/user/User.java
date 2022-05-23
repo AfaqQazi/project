@@ -12,7 +12,7 @@ public class User {
     public static boolean isIsLoggedIn() {
         return isLoggedIn;
     }
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
     public static void setUsername(String username) {
         User.username = username;
     }
