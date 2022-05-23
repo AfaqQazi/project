@@ -6,8 +6,11 @@
 package shopproject;
 
 // User imports Afaq
-import admin.Adminaccount;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import user.Account;
+import user.Shop;
 import user.User;
 
 /**
@@ -32,13 +35,12 @@ public class gui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         MainTabbedPane = new javax.swing.JTabbedPane();
         userTabPanel = new javax.swing.JPanel();
         userTabSidePanel = new javax.swing.JPanel();
         userTabAccountBtn = new javax.swing.JButton();
-        UserTabInventoryBtn = new javax.swing.JButton();
+        UserTabCartBtn = new javax.swing.JButton();
+        userTabShopBtn = new javax.swing.JButton();
         userTabAccountPanel = new javax.swing.JPanel();
         userLogoutBtn = new javax.swing.JButton();
         userFormPanel = new javax.swing.JPanel();
@@ -53,49 +55,19 @@ public class gui extends javax.swing.JFrame {
         userFormAlreadRegisteredError = new javax.swing.JLabel();
         userFormIncorrectError = new javax.swing.JLabel();
         userFormRegisteredMsg = new javax.swing.JLabel();
-        userTabInvenoryPanel = new javax.swing.JPanel();
+        userTabCartPanel = new javax.swing.JPanel();
+        userTabShopPanel = new javax.swing.JPanel();
+        Heading = new javax.swing.JLabel();
+        shopTableScrollPane = new javax.swing.JScrollPane();
+        shopItemsTable = new javax.swing.JTable();
+        shopBuyItemBtn = new javax.swing.JButton();
+        shopBuyItemBox = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        shopItemBoxQtyField = new javax.swing.JTextField();
+        shopItemCartBtn = new javax.swing.JButton();
         adminTabPanel = new javax.swing.JPanel();
         adminTabSidePanel = new javax.swing.JPanel();
-        Adminpanelbutton = new javax.swing.JButton();
-        InventorypanelButton = new javax.swing.JButton();
-        adminAccountpanel = new javax.swing.JPanel();
-        AdminLoginForm = new javax.swing.JPanel();
-        AdminLoginFormLabel1 = new javax.swing.JLabel();
-        AdminLoginFormLabel2 = new javax.swing.JLabel();
-        AdminLoiginFormUsername = new javax.swing.JTextField();
-        AdminLoginFormLabel3 = new javax.swing.JLabel();
-        AdminLoginFormPassword = new javax.swing.JPasswordField();
-        AdminLoginFormRegister = new javax.swing.JButton();
-        AdminLoginFormLogin = new javax.swing.JButton();
-        AdminLoginFormAlreadyRegistered = new javax.swing.JLabel();
-        AdminLoginFormEmpty = new javax.swing.JLabel();
-        AdminLoginFormRegistered = new javax.swing.JLabel();
-        AdminLoginFormIncorrect = new javax.swing.JLabel();
-        AdminLogoutButton = new javax.swing.JButton();
-        adminInventorypanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,10 +83,17 @@ public class gui extends javax.swing.JFrame {
             }
         });
 
-        UserTabInventoryBtn.setText("inventory");
-        UserTabInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+        UserTabCartBtn.setText("Cart");
+        UserTabCartBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserTabInventoryBtnActionPerformed(evt);
+                UserTabCartBtnActionPerformed(evt);
+            }
+        });
+
+        userTabShopBtn.setText("Shop");
+        userTabShopBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userTabShopBtnActionPerformed(evt);
             }
         });
 
@@ -125,11 +104,10 @@ public class gui extends javax.swing.JFrame {
             .addGroup(userTabSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(userTabSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userTabSidePanelLayout.createSequentialGroup()
-                        .addComponent(userTabAccountBtn)
-                        .addGap(4, 4, 4))
-                    .addComponent(UserTabInventoryBtn, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(UserTabCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userTabAccountBtn)
+                    .addComponent(userTabShopBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         userTabSidePanelLayout.setVerticalGroup(
             userTabSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,8 +115,10 @@ public class gui extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(userTabAccountBtn)
                 .addGap(26, 26, 26)
-                .addComponent(UserTabInventoryBtn)
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addComponent(UserTabCartBtn)
+                .addGap(27, 27, 27)
+                .addComponent(userTabShopBtn)
+                .addContainerGap(413, Short.MAX_VALUE))
         );
 
         userTabPanel.add(userTabSidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, -1));
@@ -157,19 +137,7 @@ public class gui extends javax.swing.JFrame {
 
         userFormLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
         userFormLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        userFormLabel4.setText("Enter Username and Password to Login or Registere");
-
-        userFormUsernameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userFormUsernameFieldActionPerformed(evt);
-            }
-        });
-
-        userFormPasswordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userFormPasswordFieldActionPerformed(evt);
-            }
-        });
+        userFormLabel4.setText("Enter Username and Password to Login or Register");
 
         userFormLabel5.setText(" Username:");
 
@@ -217,9 +185,6 @@ public class gui extends javax.swing.JFrame {
             .addGroup(userFormPanelLayout.createSequentialGroup()
                 .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(userFormPanelLayout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(userFormLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(userFormPanelLayout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -239,8 +204,11 @@ public class gui extends javax.swing.JFrame {
                                     .addComponent(userFormIncorrectError, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(userFormPanelLayout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addComponent(userFormRegisteredMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(159, Short.MAX_VALUE))
+                        .addComponent(userFormRegisteredMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(userFormPanelLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(userFormLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(113, Short.MAX_VALUE))
             .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(userFormPanelLayout.createSequentialGroup()
                     .addGap(175, 175, 175)
@@ -270,7 +238,7 @@ public class gui extends javax.swing.JFrame {
                     .addComponent(userFormIncorrectError, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addComponent(userFormRegisteredMsg)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(userFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userFormPanelLayout.createSequentialGroup()
                     .addContainerGap(292, Short.MAX_VALUE)
@@ -290,7 +258,7 @@ public class gui extends javax.swing.JFrame {
                     .addGroup(userTabAccountPanelLayout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(userFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         userTabAccountPanelLayout.setVerticalGroup(
             userTabAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,25 +267,136 @@ public class gui extends javax.swing.JFrame {
                 .addComponent(userFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addComponent(userLogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         userTabPanel.add(userTabAccountPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 950, 580));
 
-        userTabInvenoryPanel.setBackground(new java.awt.Color(204, 204, 204));
+        userTabCartPanel.setBackground(new java.awt.Color(204, 204, 204));
 
-        javax.swing.GroupLayout userTabInvenoryPanelLayout = new javax.swing.GroupLayout(userTabInvenoryPanel);
-        userTabInvenoryPanel.setLayout(userTabInvenoryPanelLayout);
-        userTabInvenoryPanelLayout.setHorizontalGroup(
-            userTabInvenoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout userTabCartPanelLayout = new javax.swing.GroupLayout(userTabCartPanel);
+        userTabCartPanel.setLayout(userTabCartPanelLayout);
+        userTabCartPanelLayout.setHorizontalGroup(
+            userTabCartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 950, Short.MAX_VALUE)
         );
-        userTabInvenoryPanelLayout.setVerticalGroup(
-            userTabInvenoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        userTabCartPanelLayout.setVerticalGroup(
+            userTabCartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 580, Short.MAX_VALUE)
         );
 
-        userTabPanel.add(userTabInvenoryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 0, 950, -1));
+        userTabPanel.add(userTabCartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 0, 950, -1));
+
+        userTabShopPanel.setBackground(new java.awt.Color(204, 204, 204));
+
+        Heading.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        Heading.setForeground(new java.awt.Color(0, 0, 0));
+        Heading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Heading.setText("Select the item you want to buy and click on the \"buy\" button to Purchase.");
+
+        shopItemsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Quantity", "Price"
+            }
+        ));
+        shopTableScrollPane.setViewportView(shopItemsTable);
+
+        shopBuyItemBtn.setText("Buy Item");
+        shopBuyItemBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shopBuyItemBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setText("Please Fill out the Details Below:");
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel2.setText("Enter the quantity of item you are purchasing:");
+
+        shopItemCartBtn.setText("Add Item To Cart");
+        shopItemCartBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shopItemCartBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout shopBuyItemBoxLayout = new javax.swing.GroupLayout(shopBuyItemBox);
+        shopBuyItemBox.setLayout(shopBuyItemBoxLayout);
+        shopBuyItemBoxLayout.setHorizontalGroup(
+            shopBuyItemBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shopBuyItemBoxLayout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addGroup(shopBuyItemBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addGroup(shopBuyItemBoxLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(shopItemBoxQtyField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(85, 85, 85))
+            .addGroup(shopBuyItemBoxLayout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addComponent(shopItemCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        shopBuyItemBoxLayout.setVerticalGroup(
+            shopBuyItemBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shopBuyItemBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(shopItemBoxQtyField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(shopItemCartBtn)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout userTabShopPanelLayout = new javax.swing.GroupLayout(userTabShopPanel);
+        userTabShopPanel.setLayout(userTabShopPanelLayout);
+        userTabShopPanelLayout.setHorizontalGroup(
+            userTabShopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userTabShopPanelLayout.createSequentialGroup()
+                .addGap(186, 186, 186)
+                .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(229, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userTabShopPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(userTabShopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userTabShopPanelLayout.createSequentialGroup()
+                        .addComponent(shopTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(252, 252, 252))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userTabShopPanelLayout.createSequentialGroup()
+                        .addComponent(shopBuyItemBtn)
+                        .addGap(431, 431, 431))))
+            .addGroup(userTabShopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userTabShopPanelLayout.createSequentialGroup()
+                    .addContainerGap(248, Short.MAX_VALUE)
+                    .addComponent(shopBuyItemBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(253, Short.MAX_VALUE)))
+        );
+        userTabShopPanelLayout.setVerticalGroup(
+            userTabShopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userTabShopPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(shopTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(shopBuyItemBtn)
+                .addGap(28, 28, 28))
+            .addGroup(userTabShopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userTabShopPanelLayout.createSequentialGroup()
+                    .addContainerGap(75, Short.MAX_VALUE)
+                    .addComponent(shopBuyItemBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(85, Short.MAX_VALUE)))
+        );
+
+        userTabPanel.add(userTabShopPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 0, 950, -1));
 
         MainTabbedPane.addTab("User Tab", userTabPanel);
 
@@ -325,202 +404,18 @@ public class gui extends javax.swing.JFrame {
 
         adminTabSidePanel.setBackground(new java.awt.Color(153, 153, 153));
 
-        Adminpanelbutton.setText("Admin");
-        Adminpanelbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdminpanelbuttonActionPerformed(evt);
-            }
-        });
-
-        InventorypanelButton.setText("Inventory");
-        InventorypanelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InventorypanelButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout adminTabSidePanelLayout = new javax.swing.GroupLayout(adminTabSidePanel);
         adminTabSidePanel.setLayout(adminTabSidePanelLayout);
         adminTabSidePanelLayout.setHorizontalGroup(
             adminTabSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminTabSidePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(adminTabSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(InventorypanelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Adminpanelbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addGap(0, 100, Short.MAX_VALUE)
         );
         adminTabSidePanelLayout.setVerticalGroup(
             adminTabSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminTabSidePanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(Adminpanelbutton)
-                .addGap(53, 53, 53)
-                .addComponent(InventorypanelButton)
-                .addContainerGap(450, Short.MAX_VALUE))
+            .addGap(0, 570, Short.MAX_VALUE)
         );
 
         adminTabPanel.add(adminTabSidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, -1));
-
-        AdminLoginFormLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        AdminLoginFormLabel1.setText("Enter Details to Login or Register");
-
-        AdminLoginFormLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        AdminLoginFormLabel2.setText("Username");
-
-        AdminLoiginFormUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdminLoiginFormUsernameActionPerformed(evt);
-            }
-        });
-
-        AdminLoginFormLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        AdminLoginFormLabel3.setText("Password");
-
-        AdminLoginFormPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdminLoginFormPasswordActionPerformed(evt);
-            }
-        });
-
-        AdminLoginFormRegister.setText("Register");
-        AdminLoginFormRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdminLoginFormRegisterActionPerformed(evt);
-            }
-        });
-
-        AdminLoginFormLogin.setText("Login");
-        AdminLoginFormLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdminLoginFormLoginActionPerformed(evt);
-            }
-        });
-
-        AdminLoginFormAlreadyRegistered.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        AdminLoginFormAlreadyRegistered.setForeground(new java.awt.Color(204, 0, 0));
-        AdminLoginFormAlreadyRegistered.setText("This user is already registered");
-
-        AdminLoginFormEmpty.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        AdminLoginFormEmpty.setForeground(new java.awt.Color(204, 0, 0));
-        AdminLoginFormEmpty.setText("The box can not be empty");
-
-        AdminLoginFormRegistered.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        AdminLoginFormRegistered.setForeground(new java.awt.Color(0, 204, 51));
-        AdminLoginFormRegistered.setText("The user has been registered now");
-
-        AdminLoginFormIncorrect.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        AdminLoginFormIncorrect.setForeground(new java.awt.Color(204, 0, 0));
-        AdminLoginFormIncorrect.setText("Incorrect username or password");
-
-        javax.swing.GroupLayout AdminLoginFormLayout = new javax.swing.GroupLayout(AdminLoginForm);
-        AdminLoginForm.setLayout(AdminLoginFormLayout);
-        AdminLoginFormLayout.setHorizontalGroup(
-            AdminLoginFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AdminLoginFormLayout.createSequentialGroup()
-                .addGroup(AdminLoginFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AdminLoginFormLayout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(AdminLoginFormLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(AdminLoginFormLayout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addGroup(AdminLoginFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(AdminLoginFormLayout.createSequentialGroup()
-                                .addComponent(AdminLoginFormRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(AdminLoginFormLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(AdminLoginFormEmpty, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AdminLoginFormAlreadyRegistered, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AdminLoginFormRegistered, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AdminLoginFormLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AdminLoginFormLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AdminLoiginFormUsername, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(AdminLoginFormPassword, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(AdminLoginFormIncorrect, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(348, Short.MAX_VALUE))
-        );
-        AdminLoginFormLayout.setVerticalGroup(
-            AdminLoginFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AdminLoginFormLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AdminLoginFormLabel1)
-                .addGap(31, 31, 31)
-                .addComponent(AdminLoginFormLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AdminLoiginFormUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AdminLoginFormLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AdminLoginFormPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(AdminLoginFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AdminLoginFormRegister)
-                    .addComponent(AdminLoginFormLogin))
-                .addGap(18, 18, 18)
-                .addComponent(AdminLoginFormEmpty)
-                .addGap(18, 18, 18)
-                .addComponent(AdminLoginFormIncorrect)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AdminLoginFormAlreadyRegistered)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AdminLoginFormRegistered)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-
-        AdminLogoutButton.setText("Logout");
-        AdminLogoutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdminLogoutButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout adminAccountpanelLayout = new javax.swing.GroupLayout(adminAccountpanel);
-        adminAccountpanel.setLayout(adminAccountpanelLayout);
-        adminAccountpanelLayout.setHorizontalGroup(
-            adminAccountpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminAccountpanelLayout.createSequentialGroup()
-                .addGroup(adminAccountpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(adminAccountpanelLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(AdminLoginForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(adminAccountpanelLayout.createSequentialGroup()
-                        .addGap(263, 263, 263)
-                        .addComponent(AdminLogoutButton)))
-                .addContainerGap(115, Short.MAX_VALUE))
-        );
-        adminAccountpanelLayout.setVerticalGroup(
-            adminAccountpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminAccountpanelLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(AdminLoginForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(AdminLogoutButton)
-                .addGap(37, 37, 37))
-        );
-
-        adminTabPanel.add(adminAccountpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 940, 450));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Inventory details");
-
-        javax.swing.GroupLayout adminInventorypanelLayout = new javax.swing.GroupLayout(adminInventorypanel);
-        adminInventorypanel.setLayout(adminInventorypanelLayout);
-        adminInventorypanelLayout.setHorizontalGroup(
-            adminInventorypanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminInventorypanelLayout.createSequentialGroup()
-                .addGap(222, 222, 222)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(550, Short.MAX_VALUE))
-        );
-        adminInventorypanelLayout.setVerticalGroup(
-            adminInventorypanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminInventorypanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(392, Short.MAX_VALUE))
-        );
-
-        adminTabPanel.add(adminInventorypanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         MainTabbedPane.addTab("Admin Tab", adminTabPanel);
 
@@ -529,10 +424,7 @@ public class gui extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    
-    
-    
-    
+
     // USER ACTION FUNCTON DO NOT INCLUDE ADMIN FUNCTION WITH THESE
     
     private void userTabAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTabAccountBtnActionPerformed
@@ -540,14 +432,16 @@ public class gui extends javax.swing.JFrame {
         Account.show(this.userFormPanel , this.userLogoutBtn);
         Account.clearErrors(this.userFormEmptyError, this.userFormAlreadRegisteredError , this.userFormIncorrectError , this.userFormRegisteredMsg);
         this.userTabAccountPanel.setVisible(true);
-        this.userTabInvenoryPanel.setVisible(false);
+        this.userTabCartPanel.setVisible(false);
+        this.userTabShopPanel.setVisible(false);
     }//GEN-LAST:event_userTabAccountBtnActionPerformed
 
-    private void UserTabInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserTabInventoryBtnActionPerformed
+    private void UserTabCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserTabCartBtnActionPerformed
         // TODO add your handling code here:
         this.userTabAccountPanel.setVisible(false);
-        this.userTabInvenoryPanel.setVisible(true);
-    }//GEN-LAST:event_UserTabInventoryBtnActionPerformed
+        this.userTabCartPanel.setVisible(true);
+        this.userTabShopPanel.setVisible(false);
+    }//GEN-LAST:event_UserTabCartBtnActionPerformed
 
     private void userFormRegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userFormRegisterBtnActionPerformed
         // TODO add your handling code here:
@@ -570,63 +464,47 @@ public class gui extends javax.swing.JFrame {
         // TODO add your handling code here:
         Account.logoutUser();
         Account.show(this.userFormPanel , this.userLogoutBtn);
-        
     }//GEN-LAST:event_userLogoutBtnActionPerformed
-        //Admin functions
-    private void AdminpanelbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminpanelbuttonActionPerformed
+
+    private void userTabShopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTabShopBtnActionPerformed
+        if (User.isIsLoggedIn()) {
+            // TODO add your handling code here:
+            this.userTabAccountPanel.setVisible(false);
+            this.userTabCartPanel.setVisible(false);
+            this.userTabShopPanel.setVisible(true);
+
+            // shopBuyItemBox should dissapear
+            this.shopBuyItemBox.setVisible(false);
+            this.shopTableScrollPane.setVisible(true);
+            this.shopBuyItemBtn.setVisible(true);
+
+            // load items
+            DefaultTableModel model =  (DefaultTableModel)this.shopItemsTable.getModel();
+            Shop.loadItems(model);        
+        } else {
+            JOptionPane.showMessageDialog(null, "User must be logged in in order to view shop");
+        }
+    }//GEN-LAST:event_userTabShopBtnActionPerformed
+
+    private void shopBuyItemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopBuyItemBtnActionPerformed
         // TODO add your handling code here:
-                Adminaccount.ClearErrors(this.AdminLoginFormEmpty,this.AdminLoginFormAlreadyRegistered,this.AdminLoginFormRegistered,this.AdminLoginFormIncorrect);
-        Adminaccount.show(this.AdminLoginForm, this.AdminLogoutButton);
-        this.adminAccountpanel.setVisible(true);
-        this.adminInventorypanel.setVisible(false);
         
-        
-    }//GEN-LAST:event_AdminpanelbuttonActionPerformed
-        
-    private void InventorypanelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InventorypanelButtonActionPerformed
-        // TODO add your handling code here:
-        this.adminAccountpanel.setVisible(false);
-        this.adminInventorypanel.setVisible(true);
-    }//GEN-LAST:event_InventorypanelButtonActionPerformed
+        if (this.shopItemsTable.getSelectedRow() != -1) {
+            // item table should dissapear
+            this.shopTableScrollPane.setVisible(false);
+            this.shopBuyItemBox.setVisible(true);
+            this.shopBuyItemBtn.setVisible(false);
+            /*
+            DefaultTableModel model =  (DefaultTableModel)this.shopItemsTable.getModel();
+            JTable table = this.shopItemsTable;
+            Shop.buyItem(model , table);
+            */
+        }
+    }//GEN-LAST:event_shopBuyItemBtnActionPerformed
 
-    private void userFormPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userFormPasswordFieldActionPerformed
+    private void shopItemCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopItemCartBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userFormPasswordFieldActionPerformed
-
-    private void AdminLoiginFormUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLoiginFormUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AdminLoiginFormUsernameActionPerformed
-
-    private void AdminLoginFormRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLoginFormRegisterActionPerformed
-        // TODO add your handling code here:
-    Adminaccount.ClearErrors(this.AdminLoginFormEmpty,this.AdminLoginFormAlreadyRegistered,this.AdminLoginFormRegistered,this.AdminLoginFormIncorrect);
-    String username = this.AdminLoiginFormUsername.getText();
-    String password = this.AdminLoginFormPassword.getText();
-    Adminaccount.registerAdmin(username,password,AdminLoginFormEmpty, AdminLoginFormAlreadyRegistered, AdminLoginFormRegistered);
-    }//GEN-LAST:event_AdminLoginFormRegisterActionPerformed
-
-    private void AdminLoginFormLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLoginFormLoginActionPerformed
-        // TODO add your handling code here:
-      Adminaccount.ClearErrors(this.AdminLoginFormEmpty,this.AdminLoginFormAlreadyRegistered,this.AdminLoginFormRegistered,this.AdminLoginFormIncorrect);
-    String username = this.AdminLoiginFormUsername.getText();
-    String password = this.AdminLoginFormPassword.getText();
-    Adminaccount.loginAdmin(username, password, AdminLoginFormEmpty, AdminLoginFormIncorrect);
-    Adminaccount.show(this.AdminLoginForm,this.AdminLogoutButton);
-    }//GEN-LAST:event_AdminLoginFormLoginActionPerformed
-
-    private void userFormUsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userFormUsernameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userFormUsernameFieldActionPerformed
-
-    private void AdminLoginFormPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLoginFormPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AdminLoginFormPasswordActionPerformed
-
-    private void AdminLogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLogoutButtonActionPerformed
-        // TODO add your handling code here:
-        Adminaccount.logoutAdmin();
-        Adminaccount.show(AdminLoginForm, AdminLogoutButton);
-    }//GEN-LAST:event_AdminLogoutButtonActionPerformed
+    }//GEN-LAST:event_shopItemCartBtnActionPerformed
     
     // USER ACTION FUNCTON END
     
@@ -664,36 +542,26 @@ public class gui extends javax.swing.JFrame {
                 a.setVisible(true);
                 // this is so user does not see the account panel when he is not logged in
                 a.userTabAccountPanel.setVisible(false);
-                a.adminAccountpanel.setVisible(false);
+                a.userTabCartPanel.setVisible(false);
+                a.userTabShopPanel.setVisible(false);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel AdminLoginForm;
-    private javax.swing.JLabel AdminLoginFormAlreadyRegistered;
-    private javax.swing.JLabel AdminLoginFormEmpty;
-    private javax.swing.JLabel AdminLoginFormIncorrect;
-    private javax.swing.JLabel AdminLoginFormLabel1;
-    private javax.swing.JLabel AdminLoginFormLabel2;
-    private javax.swing.JLabel AdminLoginFormLabel3;
-    private javax.swing.JButton AdminLoginFormLogin;
-    private javax.swing.JPasswordField AdminLoginFormPassword;
-    private javax.swing.JButton AdminLoginFormRegister;
-    private javax.swing.JLabel AdminLoginFormRegistered;
-    private javax.swing.JButton AdminLogoutButton;
-    private javax.swing.JTextField AdminLoiginFormUsername;
-    private javax.swing.JButton Adminpanelbutton;
-    private javax.swing.JButton InventorypanelButton;
+    private javax.swing.JLabel Heading;
     private javax.swing.JTabbedPane MainTabbedPane;
-    private javax.swing.JButton UserTabInventoryBtn;
-    private javax.swing.JPanel adminAccountpanel;
-    private javax.swing.JPanel adminInventorypanel;
+    private javax.swing.JButton UserTabCartBtn;
     private javax.swing.JPanel adminTabPanel;
     private javax.swing.JPanel adminTabSidePanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel shopBuyItemBox;
+    private javax.swing.JButton shopBuyItemBtn;
+    private javax.swing.JTextField shopItemBoxQtyField;
+    private javax.swing.JButton shopItemCartBtn;
+    private javax.swing.JTable shopItemsTable;
+    private javax.swing.JScrollPane shopTableScrollPane;
     private javax.swing.JLabel userFormAlreadRegisteredError;
     private javax.swing.JLabel userFormEmptyError;
     private javax.swing.JLabel userFormIncorrectError;
@@ -709,8 +577,10 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JButton userLogoutBtn;
     private javax.swing.JButton userTabAccountBtn;
     private javax.swing.JPanel userTabAccountPanel;
-    private javax.swing.JPanel userTabInvenoryPanel;
+    private javax.swing.JPanel userTabCartPanel;
     private javax.swing.JPanel userTabPanel;
+    private javax.swing.JButton userTabShopBtn;
+    private javax.swing.JPanel userTabShopPanel;
     private javax.swing.JPanel userTabSidePanel;
     // End of variables declaration//GEN-END:variables
 }

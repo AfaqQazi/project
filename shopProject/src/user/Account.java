@@ -33,7 +33,7 @@ public class Account {
         if (cont == true) { // if Fields are not empty and user is not already registered
             try {
                 FileWriter usersFile = new FileWriter("database/users.txt" , true);
-                usersFile.append(username.trim() + ":" + password.trim() + "\r\n");
+                usersFile.append(username.trim() + ":" + password.trim() + "\n");
                 usersFile.close();
                 registeredMsg.setVisible(true);
             } catch (IOException e) {
