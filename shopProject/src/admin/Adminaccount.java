@@ -1,5 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package admin;
 
-package user;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,31 +13,36 @@ import javax.swing.JLabel;
 import java.io.FileWriter;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import admin.Admin;
 
-public class Account {
+public class Adminaccount {
     
-    public static void clearErrors(JLabel label1 , JLabel label2 , JLabel label3 , JLabel registeredMsg) {
-        label1.setVisible(false);
-        label2.setVisible(false);
-        label3.setVisible(false);
-        registeredMsg.setVisible(false);
+    public static void ClearErrors(JLabel label1 , JLabel label2 , JLabel label3 ,JLabel label4)
+    {
+      label1.setVisible(false);
+      label2.setVisible(false);
+      label3.setVisible(false);
+      label4.setVisible(false);
+      
     }
-    public static void show(JPanel userForm , JButton userLogoutBtn) {
-        if (User.isIsLoggedIn() == true) {
-            userForm.setVisible(false);
-            userLogoutBtn.setVisible(true);
-        } else {
-            userLogoutBtn.setVisible(false);
-            userForm.setVisible(true);
+    
+    public static void show(JPanel AdminLoginform,JButton AdminLogoutBtn)
+    {
+        if(Admin.isLogedin==true)
+        {
+            AdminLoginform.setVisible(false);
+            AdminLogoutBtn.setVisible(true);
+        }
+        else{
+             AdminLoginform.setVisible(true);
+            AdminLogoutBtn.setVisible(false);
         }
     }
-    
-      // e1 is "empty fields" error and e2 is "already reigstered" error and they are JLabels
-    public static void registerUser(String username , String password , JLabel e1 ,JLabel e2 , JLabel registeredMsg) {
+     public static void registerAdmin(String username , String password, JLabel e1 ,JLabel e2 , JLabel registeredMsg) {
         boolean cont = checkRegistrationCreds(username , password , e1 , e2);
         if (cont == true) { // if Fields are not empty and user is not already registered
             try {
-                FileWriter usersFile = new FileWriter("database/users.txt" , true);
+                FileWriter usersFile = new FileWriter("database/admins.txt" , true);
                 usersFile.append(username.trim() + ":" + password.trim() + "\r\n");
                 usersFile.close();
                 registeredMsg.setVisible(true);
@@ -41,7 +51,8 @@ public class Account {
             }
         }
     }
-    private static boolean checkRegistrationCreds(String username , String password,JLabel e1 ,JLabel e2) {
+    
+          private static boolean checkRegistrationCreds(String username , String password,JLabel e1 ,JLabel e2) {
         if (username.isEmpty() || password.isEmpty()) {
             // make the empty error label visible
             e1.setVisible(true);
@@ -50,7 +61,7 @@ public class Account {
         
         // check if user is already registered
         try {
-            File usersFile = new File("database/users.txt");
+            File usersFile = new File("database/admins.txt");
             Scanner sc = new Scanner(usersFile);
             while (sc.hasNextLine()) {
                 String dbUsername = "";
@@ -69,15 +80,15 @@ public class Account {
         } catch(IOException e) {
             System.out.println("Something went wrong during fetchin users from database : " + e);
         }
+ 
         return true;
-    }
-    
-    public static void loginUser(String username , String password , JLabel e1 , JLabel e2) {
+          }       
+public static void loginAdmin(String username , String password , JLabel e1 , JLabel e2) {
         boolean cont = checkLoginCreds(username , password,e1,e2);
         if (cont) {
          // create a user object and set isLoggedIn to true.
-          User.setUsername(username);
-          User.setIsLoggedIn(true);
+          Admin.setUsername(username);
+          Admin.setIsLoggedIn(true);
         }
     }
     private static boolean checkLoginCreds(String username , String password , JLabel e1 , JLabel e2) {
@@ -90,7 +101,7 @@ public class Account {
         // check if creds are valid
         boolean userExists = false;
         try {
-            File usersFile = new File("database/users.txt");
+            File usersFile = new File("database/admins.txt");
             Scanner sc = new Scanner(usersFile);
             boolean copyPass;
             while (sc.hasNextLine()){
@@ -125,7 +136,9 @@ public class Account {
         
         return true;
     }
-    public static void logoutUser(){
-        User.setIsLoggedIn(false);
+    public static void logoutAdmin(){
+        Admin.setIsLoggedIn(false);
     }
 }
+
+
