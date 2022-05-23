@@ -53,6 +53,7 @@ public class gui extends javax.swing.JFrame {
         userFormRegisteredMsg = new javax.swing.JLabel();
         userTabCartPanel = new javax.swing.JPanel();
         userTabShopPanel = new javax.swing.JPanel();
+        Heading = new javax.swing.JLabel();
         adminTabPanel = new javax.swing.JPanel();
         adminTabSidePanel = new javax.swing.JPanel();
 
@@ -276,15 +277,26 @@ public class gui extends javax.swing.JFrame {
 
         userTabShopPanel.setBackground(new java.awt.Color(204, 204, 204));
 
+        Heading.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        Heading.setForeground(new java.awt.Color(0, 0, 0));
+        Heading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Heading.setText("Buy Items Here:");
+
         javax.swing.GroupLayout userTabShopPanelLayout = new javax.swing.GroupLayout(userTabShopPanel);
         userTabShopPanel.setLayout(userTabShopPanelLayout);
         userTabShopPanelLayout.setHorizontalGroup(
             userTabShopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 950, Short.MAX_VALUE)
+            .addGroup(userTabShopPanelLayout.createSequentialGroup()
+                .addGap(331, 331, 331)
+                .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(366, Short.MAX_VALUE))
         );
         userTabShopPanelLayout.setVerticalGroup(
             userTabShopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGroup(userTabShopPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(537, Short.MAX_VALUE))
         );
 
         userTabPanel.add(userTabShopPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 0, 950, -1));
@@ -408,6 +420,7 @@ public class gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Heading;
     private javax.swing.JTabbedPane MainTabbedPane;
     private javax.swing.JButton UserTabCartBtn;
     private javax.swing.JPanel adminTabPanel;
